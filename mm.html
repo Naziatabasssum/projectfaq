@@ -1,0 +1,25 @@
+function showInfo(variable, name = "Variable") {
+    console.log(`%c=== Info for ${name} ===`, "color: white; background: teal; font-weight: bold; padding: 2px 6px;");
+    console.log("%cValue:", "color: green; font-weight: bold;", variable);
+    console.log("%cType:", "color: blue; font-weight: bold;", typeof variable);
+
+    // Calculate length if possible
+    let length;
+    if (typeof variable === "string" || Array.isArray(variable)) {
+        length = variable.length;
+    } else if (typeof variable === "object" && variable !== null) {
+        length = Object.keys(variable).length;
+    }
+
+    if (length !== undefined) {
+        console.log("%cLength:", "color: purple; font-weight: bold;", length);
+    }
+
+    console.log("%c", "color: gray;");
+}
+
+// Examples
+showInfo("Hello, World!", "My String");
+showInfo([1, 2, 3, 4, 5], "My Array");
+showInfo(42, "My Number");
+showInfo({name: "Alice", age: 25}, "My Object");
